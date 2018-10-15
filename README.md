@@ -10,3 +10,9 @@
 - ctrlx --) ctrlc to the main folder and erase PROV folder
 ### 3 add security checker
 >composer require sensiolabs/security -checker --dev
+### 4 create externe DB MySQL
+-create datas folder 
+-create the database schema with Workbench
+-export diagram to image: /datas/diagram.png
+-real export in .sql
+### 5 
