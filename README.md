@@ -8,3 +8,5 @@
 ### 2 install symfony 4 with composer
 > composer create-project symfony/website-skeleton prov
 - ctrlx --) ctrlc to the main folder and erase PROV folder
+### 3 add security checker
+>composer require sensiolabs/security -checker --dev
