@@ -31,3 +31,6 @@ change .env line 16
 * @Route("/", name="accueil")
 ### 11 add bootstrap 4 
 add to file base.html.twig CSS and JavaScript bootstrap 4 
+### 12 add datas
+### 13 add to publicController
+use App\Entity\Sections;
