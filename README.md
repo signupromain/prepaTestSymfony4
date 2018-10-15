@@ -17,6 +17,15 @@
 -real export in .sql
 ### 5 change env.
 change .env line 16
->DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/prepatestsymfony4
+>Configure your db driver and server_version in config/packages/doctrine.yaml
+ DATABASE_URL=mysql://root:@127.0.0.1:3306/prepatestsymfony4
 ### 6 create mapping database
 > php bin/console doctrine:mapping:import 'App\Entity' annotation --path=src/Entity
+### 7 create setters and getters for entities
+> php bin/console make:entity App\Entity --regenerate
+### 8 create PublicController
+> php bin/console make:controller PublicController
+### 9 start server
+> php bin/console server:run
+### 10 modify
+* @Route("/", name="accueil")
