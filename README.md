@@ -29,3 +29,5 @@ change .env line 16
 > php bin/console server:run
 ### 10 modify
 * @Route("/", name="accueil")
+### 11 add bootstrap 4 
+add to file base.html.twig CSS and JavaScript bootstrap 4 
