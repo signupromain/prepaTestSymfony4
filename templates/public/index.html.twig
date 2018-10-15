@@ -13,7 +13,7 @@
              </li>
              {% for itemMenu in sections %}
              <li class="nav-item">
-                 <a class="nav-link" href="./section/"{{ itemMenu.getIdsections }}>{{ itemMenu.getTheTitled }}</a>
+                 <a class="nav-link" href="./section/"{{ itemMenu.getIdsections }}>{{ itemMenu.getThetitled }}</a>
              </li>
                 {% endfor %}
          </ul>
@@ -22,5 +22,13 @@
          </nav>
      {% endblock %}
 {% block contenu %}
-
+    {% for item in articles %}
+        <h2>{{ item.getTheTitle }}</h2>
+        <h3>
+            {% for categ in item.getSectionssections %}{{ categ.getThetitled }} |
+            {% endfor %}
+        </h3>
+        <p>{{ item.getTheText|slice (0,350) }} ...</p>
+        <h4>Par {{ item.getUsersusers.getTherealname }} le {{ item.getThedate|date("d/m/Y à H \\h i \\m") }}<hr></h4>
+    {% endfor %}
 {% endblock %}

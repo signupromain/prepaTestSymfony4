@@ -17,7 +17,7 @@ class PublicController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $rub = $entityManager->getRepository(Sections::class)->findAll();
-        $art = $entityManager->getRepository(Article::class)->findAll();
+        $art = $entityManager->getRepository(Articles::class)->findAll();
         return $this->render('public/index.html.twig', [
             'sections' => $rub,
             'articles' => $art,
