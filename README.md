@@ -58,3 +58,40 @@ in index.html.twig
         {{ itemMenu.getIdsections }}">{{ itemMenu.getThetitled }}</a>
     </li>
             {% endfor %}
+### step 14 - get all articles on index.php 
+in front of PublicController.php
+        
+    // use entity Articles.php
+    use App\Entity\Articles;         
+in index.html.twig
+
+
+    // get Doctrine Manager for all entities
+        $entityManager = $this->getDoctrine()->getManager();
+
+        // get all sections in db
+        $rub = $entityManager->getRepository(Sections::class)->findAll();
+
+        // get all articles from db
+        $art = $entityManager->getRepository(Articles::class)->findAll();
+
+        return $this->render('public/index.html.twig', [
+            'sections' => $rub,
+            'articles' => $art,
+        ]);  
+### step 15 - display all articles on index.html.twig
+- no difference for the fields into Articles
+- automatical INNER JOIN or new query when we make the link one to many or many to many
+
+        {% for item in articles %}
+            <h2>{{ item.getThetitle }}</h2>
+            <h3>
+                {% for categ in item.getSectionssections %}
+                    {{ categ.getThetitled }} |
+                {% endfor %}
+            </h3>
+            <p>{{ item.getThetext|slice(0,350) }} ... </p>
+            <h4>Par {{ item.getUsersusers.getTherealname }} 
+            le {{ item.getThedate|date("d/m/Y à H \\h i \\m") }}</h4><hr>
+        {% endfor %} 
+         
