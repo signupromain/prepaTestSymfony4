@@ -1,31 +1,33 @@
 {% extends 'template.html.twig' %}
-
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block titre %}{{ parent() }} - Accueil{% endblock %}
-{% block stitre %}Bienvenu sur notre site test{% endblock %}
-     {% block menu %}
-         <ul class="navbar-nav ml-auto">
-             <li class="nav-item active">
-                 <a class="nav-link" href="#">Home
-                     <span class="sr-only">(current)</span>
-                 </a>
-             </li>
-             {% for itemMenu in sections %}
-             <li class="nav-item">
-                 <a class="nav-link" href="./section/"{{ itemMenu.getIdsections }}>{{ itemMenu.getThetitled }}</a>
-             </li>
-                {% endfor %}
-         </ul>
-     {% endblock %}
+{% block stitre %}Bienvenue sur notre site d'actualité pour Webdev{% endblock %}
+
+{% block menu %}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path("accueil") }}">Accueil
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        {% for itemMenu in sections %}
+            <li class="nav-item">
+                <a class="nav-link" href="./section/{{ itemMenu.getIdsections }}">{{ itemMenu.getThetitled }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
 {% block contenu %}
     {% for item in articles %}
-        <h2>{{ item.getTheTitle }}</h2>
+        <h2>{{ item.getThetitle }}</h2>
         <h3>
-            {% for categ in item.getSectionssections %}{{ categ.getThetitled }} |
+            {% for categ in item.getSectionssections %}
+                {{ categ.getThetitled }} |
             {% endfor %}
         </h3>
-        <p>{{ item.getTheText|truncate (350,true) }}</p>
-        <h4>Par {{ item.getUsersusers.getTherealname }} le {{ item.getThedate|date("d/m/Y à H \\h i \\m") }}<hr></h4>
+        <p>{{ item.getThetext|truncate(350,true) }} <a href="{{ path("detail_article",{'id': item.getIdarticles}) }}">Lire la suite</a></p>
+        <h4>Par {{ item.getUsersusers.getTherealname }} le {{ item.getThedate|date("d/m/Y à H \\h i \\m") }}</h4><hr>
     {% endfor %}
 {% endblock %}
